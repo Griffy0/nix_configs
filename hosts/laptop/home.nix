@@ -24,6 +24,7 @@
   # environment.
   imports = [
     ../../modules/home-manager/hyfetch.nix
+    ../../modules/home-manager/vesktop.nix
     ../../modules/desktop_envs/gnome_home.nix
     ../../modules/desktop_envs/hyprland_home.nix
   ];
@@ -49,6 +50,20 @@
     #'')
   ];
 
+  xdg.desktopEntries = {
+    spotify = {
+      name = "Spotify";
+      type = "Application";
+      exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    };
+    signal = {
+      name = "Signal";
+      type = "Application";
+      exec = "signal-desktop --password-store=\"gnome-libsecret\" --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    };
+  };
+
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -71,10 +86,13 @@
   };
   programs.bash = {
     enable = true;
-    initExtra = "hyfetch";
+    initExtra = ''
+      alias spotify="spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
+      hyfetch
+    '';
   };
   programs.git.enable = true;
-  programs.vesktop.enable = true;
+  #programs.vesktop.enable = true;
   #programs.spotify-player.enable = true;
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

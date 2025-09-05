@@ -13,6 +13,7 @@
     enable = true;
   };
   #stylix.targets.firefox.profileNames = [ "default" ];
+  stylix.targets.vesktop.enable = false;
   /*stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark";
     targets = {
