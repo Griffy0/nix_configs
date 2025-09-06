@@ -12,6 +12,9 @@
   services.hyprpaper = {
     enable = true;
   };
+  programs.hyprshot = {
+    enable = true;
+  };
   #stylix.targets.firefox.profileNames = [ "default" ];
   stylix.targets.vesktop.enable = false;
   /*stylix = {

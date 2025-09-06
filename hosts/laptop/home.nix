@@ -26,6 +26,7 @@
     ../../modules/home-manager/hyfetch.nix
     ../../modules/home-manager/vesktop.nix
     ../../modules/home-manager/dunst.nix
+    #../../modules/home-manager/flameshot.nix
     ../../modules/desktop_envs/gnome_home.nix
     ../../modules/desktop_envs/hyprland_home.nix
   ];
