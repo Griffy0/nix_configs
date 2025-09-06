@@ -25,29 +25,15 @@
   imports = [
     ../../modules/home-manager/hyfetch.nix
     ../../modules/home-manager/vesktop.nix
+    ../../modules/home-manager/dunst.nix
     ../../modules/desktop_envs/gnome_home.nix
     ../../modules/desktop_envs/hyprland_home.nix
   ];
   home.packages = [
-    # pkgs.hyfetch
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
     pkgs.signal-desktop
     pkgs.spotify
     pkgs.spotify-cli-linux
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    #(pkgs.writeShellScriptBin "my-hello" ''
-     # echo "Hello, ${config.home.username}!"
-    #'')
+    pkgs.brightnessctl  # Allow KB Backlight ctrl
   ];
 
   xdg.desktopEntries = {
@@ -92,8 +78,7 @@
     '';
   };
   programs.git.enable = true;
-  #programs.vesktop.enable = true;
-  #programs.spotify-player.enable = true;
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
