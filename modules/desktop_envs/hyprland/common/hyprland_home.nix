@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = [
     pkgs.hyprpaper
@@ -27,10 +27,17 @@
   };
 
   #stylix.targets.firefox.profileNames = [ "default" ];
-  stylix.targets = {
-    vesktop.enable = false;
-    firefox.enable = false;
-    qt.enable = false;
+  stylix = {
+    targets = {
+      vesktop.enable = false;
+      firefox.enable = false;
+      qt.enable = false;
+    };
+    cursor = {
+      package = inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default;
+      name = "BreezX-RosePine-Linux";
+      size = 20;
+    };
   };
   programs.wofi.enable = true;
 }
