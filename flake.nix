@@ -12,6 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-wallpaper.url = "github:lunik1/nix-wallpaper";
+    nvf.url = "github:notashelf/nvf";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -21,7 +22,7 @@
         ./hosts/laptop/configuration.nix
         inputs.home-manager.nixosModules.default
         inputs.stylix.nixosModules.stylix
-#        inputs.stylix.homeModules.stylix
+#        inputs.nvf.homeManagerModules.default
         #inputs.nix-wallpaper.packages."x86_64-linux".default
       ];
     };

@@ -30,6 +30,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.blueman.enable = true;
+
   # Set your time zone.
   time.timeZone = "Australia/Melbourne";
 
@@ -47,6 +49,11 @@
     LC_TELEPHONE = "en_AU.UTF-8";
     LC_TIME = "en_AU.UTF-8";
   };
+
+  fonts.packages = with pkgs; [
+    font-awesome # Required for status bars
+    nerd-fonts.symbols-only # ^
+  ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = false;
@@ -112,6 +119,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    alacritty
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   #  pkgs.kitty

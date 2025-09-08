@@ -25,7 +25,8 @@
   imports = [
     ../../modules/home-manager/hyfetch.nix
     ../../modules/home-manager/vesktop.nix
-    ../../modules/home-manager/dunst.nix
+#    ../../modules/home-manager/kitty.nix
+#    ../../modules/home-manager/dunst.nix
     #../../modules/home-manager/flameshot.nix
     ../../modules/desktop_envs/gnome_home.nix
     ../../modules/desktop_envs/hyprland_home.nix
@@ -34,7 +35,7 @@
     pkgs.signal-desktop
     pkgs.spotify
     pkgs.spotify-cli-linux
-    pkgs.brightnessctl  # Allow KB Backlight ctrl
+    pkgs.brightnessctl  # Allow monitor brightness ctrl
   ];
 
   xdg.desktopEntries = {
@@ -68,9 +69,12 @@
   programs.firefox = {
     enable = true;
   };
+
   programs.kitty = {
     enable = true;
+    extraConfig = "background_opacity 0.1";
   };
+  
   programs.bash = {
     enable = true;
     initExtra = ''
@@ -79,7 +83,8 @@
     '';
   };
   programs.git.enable = true;
-
+  services.blueman-applet.enable = true;
+#  programs.nvf.enable = true;
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell

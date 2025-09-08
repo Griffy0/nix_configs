@@ -2,7 +2,7 @@
 {
   xdg.desktopEntries.vesktop = {
     name = "Vesktop";
-    genericName = "Discord";
+#    genericName = "Discord";
     type = "Application";
     exec = "vesktop --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
   };
