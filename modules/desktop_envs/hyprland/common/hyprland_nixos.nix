@@ -11,6 +11,9 @@
     pkgs.hyprcursor
   ];  
 
+  # Let hyprlock do its own stuff
+  security.pam.services.hyprlock = {};
+
   # Catppuccin theme for stylix
   stylix = {
     enable = true;

@@ -26,6 +26,11 @@
     enable = true;
   };
 
+  programs.hyprlock = {
+    enable = true;
+    extraConfig = "hide_cursor = true";
+  };
+
   #stylix.targets.firefox.profileNames = [ "default" ];
   stylix = {
     targets = {
