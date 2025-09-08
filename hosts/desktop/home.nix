@@ -18,9 +18,9 @@
   imports = [
     ../../modules/home-manager/hyfetch.nix
     ../../modules/home-manager/vesktop.nix
-    ../../modules/desktop_envs/gnome_home.nix
+    ../../modules/desktop_envs/gnome/gnome_home.nix
     ../../modules/desktop_envs/hyprland/common/hyprland_home.nix
-    ../../modules/desktop_envs/hyprland/laptop_hypr_home.nix
+    ../../modules/desktop_envs/hyprland/desktop_hypr_home.nix
   ];
 
   # These don't have any better way to import
@@ -73,9 +73,6 @@
 
   # Git
   programs.git.enable = true;
-
-  # Enable the other half of Bluetooth
-  services.blueman-applet.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

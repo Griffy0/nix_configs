@@ -9,8 +9,8 @@
     [ 
       ./hardware-configuration.nix
       ../../modules/nixos/boilerplate.nix
-      ../../modules/desktop_envs/gnome_nixos.nix
-      ../../modules/desktop_envs/hyprland_nixos.nix
+      ../../modules/desktop_envs/gnome/gnome_nixos.nix
+      ../../modules/desktop_envs/hyprland/common/hyprland_nixos.nix
       ../../modules/nixos/pipewire.nix
       inputs.home-manager.nixosModules.default
     ];
