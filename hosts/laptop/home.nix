@@ -18,7 +18,7 @@
   imports = [
     ../../modules/home-manager/hyfetch.nix
     ../../modules/home-manager/vesktop.nix
-    ../../modules/desktop_envs/gnome_home.nix
+    ../../modules/desktop_envs/gnome/gnome_home.nix
     ../../modules/desktop_envs/hyprland/common/hyprland_home.nix
     ../../modules/desktop_envs/hyprland/laptop_hypr_home.nix
   ];
