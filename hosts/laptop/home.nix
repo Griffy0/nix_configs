@@ -1,36 +1,28 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # Boiler-plate
   home.username = "anon";
   home.homeDirectory = "/home/anon";
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
+
+  # Install stuff without GNU
   nixpkgs = {
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
     };
   };
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+
+  # Bring in apps and desktop environments
   imports = [
     ../../modules/home-manager/hyfetch.nix
     ../../modules/home-manager/vesktop.nix
-#    ../../modules/home-manager/kitty.nix
-#    ../../modules/home-manager/dunst.nix
-    #../../modules/home-manager/flameshot.nix
     ../../modules/desktop_envs/gnome_home.nix
     ../../modules/desktop_envs/hyprland_home.nix
   ];
+
+  # These don't have any better way to import
   home.packages = [
     pkgs.signal-desktop
     pkgs.spotify
@@ -38,6 +30,7 @@
     pkgs.brightnessctl  # Allow monitor brightness ctrl
   ];
 
+  # Custom arguments for when launched with wofi, force Spotify and Signal to use Wayland
   xdg.desktopEntries = {
     spotify = {
       name = "Spotify";
@@ -51,59 +44,37 @@
     };
   };
 
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
+  # Enable firefox
   programs.firefox = {
     enable = true;
   };
 
+  # Enable kitty, with transperancy
   programs.kitty = {
     enable = true;
     extraConfig = "background_opacity 0.1";
   };
   
+  # Disable bash, keep in case of issues with zsh
   programs.bash = {
-    enable = true;
+    enable = false;
     initExtra = ''
-      alias spotify="spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
       hyfetch
     '';
   };
-  programs.git.enable = true;
-  services.blueman-applet.enable = true;
-#  programs.nvf.enable = true;
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/anon/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
+
+  # The Bash Killer
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh.enable = true;
+    initContent = "hyfetch";
   };
+
+  # Git
+  programs.git.enable = true;
+
+  # Enable the other half of Bluetooth
+  services.blueman-applet.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

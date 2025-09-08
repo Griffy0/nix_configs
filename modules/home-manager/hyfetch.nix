@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  programs.fastfetch = {
+    enable = true;
+  };
   programs.hyfetch = {
     enable = true;
     settings = {
@@ -11,7 +14,7 @@
       color_align = {
         mode = "horizontal";
       };
-      backend = "neofetch";
+      backend = "fastfetch";
       args = null;
       distro = null;
       pride_month_disable = false;

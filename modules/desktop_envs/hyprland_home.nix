@@ -26,22 +26,7 @@
     enable = true;
   };
 
-#  programs.kitty = {
-#    enable = true;
-#    extraConfig = "background_opacity 0.6";
-#  };
-#  stylix.opacity.terminal = 0.4;
   #stylix.targets.firefox.profileNames = [ "default" ];
-#  stylix.targets.vesktop.enable = false;
-#  stylix.image = ./hypr_wallpaper.png;
-  /*stylix = {
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark";
-    targets = {
-      hyprland.enable = true;
-      kitty.enable = true;
-    };
-  };*/  
-# 4programs.hyprland.enable = true;
+  stylix.targets.vesktop.enable = false;
   programs.wofi.enable = true;
-  #programs.kitty.enable = true;
 }
