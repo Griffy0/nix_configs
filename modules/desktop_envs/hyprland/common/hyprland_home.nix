@@ -27,6 +27,10 @@
   };
 
   #stylix.targets.firefox.profileNames = [ "default" ];
-  stylix.targets.vesktop.enable = false;
+  stylix.targets = {
+    vesktop.enable = false;
+    firefox.enable = false;
+    qt.enable = false;
+  };
   programs.wofi.enable = true;
 }
