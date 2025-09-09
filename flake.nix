@@ -20,7 +20,7 @@
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs; host = "laptop";};
       modules = [
-        ./hosts/laptop/configuration.nix
+        ./hosts/common/configuration.nix
         inputs.home-manager.nixosModules.default
         inputs.stylix.nixosModules.stylix
 #        inputs.nvf.homeManagerModules.default

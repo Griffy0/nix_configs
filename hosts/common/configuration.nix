@@ -7,30 +7,17 @@
 {
   imports =
     [ 
-      ../laptop/configuration.nix
-      ../laptop/hardware-configuration.nix
+      ../${host}/configuration.nix
+      ../${host}/hardware-configuration.nix
       ../../modules/nixos/boilerplate.nix
       ../../modules/nixos/pipewire.nix
       inputs.home-manager.nixosModules.default
     ];
 
-  networking.hostName = "nixos"; # Define your hostname.
-
-  # Enable AsusCtl
-  services.asusd.enable = true;
-  services.asusd.enableUserService = true;
-
-  # Enable bluetooth
-  services.blueman.enable = true;
+  networking.hostName = "${host}"; # Define your hostname.
 
   # Disable the X11 windowing system (Wayland FTW)
   services.xserver.enable = false;
-
-  # Enable the GDM display manager
-  services.displayManager.gdm.enable = true;
-
-  # Add a video driver to please the Hypr gods
-  services.xserver.videoDrivers = [ "intel" ];
 
   # zsh goog
   programs.zsh.enable = true;
@@ -49,7 +36,7 @@
     backupFileExtension = "backup";
     extraSpecialArgs = {inherit inputs;};
     users = {
-      "anon" = import ../laptop/home.nix;
+      "anon" = import ../${host}/home.nix;
     };
   };
   
@@ -60,7 +47,7 @@
     ];
     home-manager.users.anon.imports = [
       ../../modules/desktop_envs/hyprland/common/hyprland_home.nix
-      ../../modules/desktop_envs/hyprland/laptop_hypr_home.nix
+      ../../modules/desktop_envs/hyprland/${host}_hypr_home.nix
     ];
   };
 
