@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs,  ... }:
+{ config, pkgs, inputs, host, ... }:
 
 {
   imports =
     [ 
-      ./hardware-configuration.nix
+      ../laptop/configuration.nix
+      ../laptop/hardware-configuration.nix
       ../../modules/nixos/boilerplate.nix
       ../../modules/nixos/pipewire.nix
       inputs.home-manager.nixosModules.default
@@ -48,7 +49,7 @@
     backupFileExtension = "backup";
     extraSpecialArgs = {inherit inputs;};
     users = {
-      "anon" = import ./home.nix;
+      "anon" = import ../laptop/home.nix;
     };
   };
   

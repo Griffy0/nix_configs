@@ -18,7 +18,7 @@
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs; host = "laptop";};
       modules = [
         ./hosts/laptop/configuration.nix
         inputs.home-manager.nixosModules.default
@@ -28,7 +28,7 @@
       ];
     };
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs; host = "desktop";};
       modules = [
         ./hosts/desktop/configuration.nix
         inputs.home-manager.nixosModules.default
