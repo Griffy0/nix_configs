@@ -12,6 +12,12 @@
   # Enable bluetooth
   services.blueman.enable = true;
 
+  # Enable battery tracking for hyprpanel
+  services.upower.enable = true;
+
+  # Prevent Intel overheating
+  services.thermald.enable = true;
+
   # Enable the GDM display manager
   services.displayManager.gdm.enable = true;
 

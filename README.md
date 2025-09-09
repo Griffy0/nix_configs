@@ -7,10 +7,10 @@ These are personal configs. They likely will not work well on any other machines
 ## Build Commands
 
 ### Desktop
-`sudo nixos-rebuild switch --flake .#desktop`
+`sudo nixos-rebuild switch --flake .#desktop --specialisation=hyprland`
 
 ### Laptop
-`sudo nixos-rebuild switch --flake .#laptop`
+`sudo nixos-rebuild switch --flake .#laptop --specialisation=hyprland`
 
 ## General Config Structure
 ### Tree

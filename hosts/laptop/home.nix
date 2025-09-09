@@ -51,7 +51,10 @@
   # Enable kitty, with transperancy
   programs.kitty = {
     enable = true;
-    extraConfig = "background_opacity 0.1";
+    extraConfig = ''
+      background_opacity 0.1
+      window_padding_width 6
+    '';
   };
   
   # Disable bash, keep in case of issues with zsh
