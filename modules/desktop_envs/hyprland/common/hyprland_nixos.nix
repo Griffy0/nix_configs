@@ -5,6 +5,7 @@
 
   # Enable Hyprland
   programs.hyprland.enable = true;  
+  programs.hyprland.xwayland.enable = true;
   
   # Enable Hyprcursor
   environment.systemPackages = [

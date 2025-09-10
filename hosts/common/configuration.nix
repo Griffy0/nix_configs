@@ -36,7 +36,10 @@
     backupFileExtension = "backup";
     extraSpecialArgs = {inherit inputs;};
     users = {
-      "anon" = import ../${host}/home.nix;
+      "anon".imports = [ 
+        ./home.nix
+        ../${host}/home.nix 
+      ];
     };
   };
   

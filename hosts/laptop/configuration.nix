@@ -10,10 +10,14 @@
   services.asusd.enableUserService = true;
 
   # Enable bluetooth
+  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
   # Enable battery tracking for hyprpanel
   services.upower.enable = true;
+
+  # Battery viewer
+  users.users.anon.packages = [ pkgs.powertop ];
 
   # Prevent Intel overheating
   services.thermald.enable = true;

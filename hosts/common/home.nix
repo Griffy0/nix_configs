@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   # Boiler-plate
   home.username = "anon";
@@ -26,7 +25,6 @@
     pkgs.signal-desktop
     pkgs.spotify
     pkgs.spotify-cli-linux
-    pkgs.brightnessctl  # Allow monitor brightness ctrl
   ];
 
   # Custom arguments for when launched with wofi, force Spotify and Signal to use Wayland
@@ -41,6 +39,11 @@
       type = "Application";
       exec = "signal-desktop --password-store=\"gnome-libsecret\" --enable-features=UseOzonePlatform --ozone-platform=wayland";
     };
+    firefox = {
+      name = "Firefox";
+      type = "Application";
+      exec = "firefox --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    };
   };
 
   # Enable firefox
@@ -51,12 +54,15 @@
   # Enable kitty, with transperancy
   programs.kitty = {
     enable = true;
-    extraConfig = "background_opacity 0.1";
+    extraConfig = ''
+      background_opacity 0.1
+      window_padding_width 6
+    '';
   };
   
   # Disable bash, keep in case of issues with zsh
   programs.bash = {
-    enable = false;
+    enable = true;
     initExtra = ''
       hyfetch
     '';
@@ -66,14 +72,15 @@
   programs.zsh = {
     enable = true;
     oh-my-zsh.enable = true;
-    initContent = "hyfetch";
+    initContent = ''
+      hyfetch
+      alias nix-shell='nix-shell --run $SHELL'
+    '';
   };
+
 
   # Git
   programs.git.enable = true;
-
-  # Enable the other half of Bluetooth
-  services.blueman-applet.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
