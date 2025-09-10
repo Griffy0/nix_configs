@@ -16,8 +16,12 @@ These are personal configs. They likely will not work well on any other machines
 ### Tree
 ```
 .
+├── flake.lock
 ├── flake.nix
 ├── hosts
+│   ├── common
+│   │   ├── configuration.nix
+│   │   └── home.nix
 │   ├── desktop
 │   │   ├── configuration.nix
 │   │   ├── hardware-configuration.nix
@@ -29,8 +33,9 @@ These are personal configs. They likely will not work well on any other machines
 ├── modules
 │   ├── desktop_envs
 │   │   ├── gnome
-│   │   │   ├── gnome_home.nix
-│   │   │   └── gnome_nixos.nix
+│   │   │   └── common
+│   │   │       ├── gnome_home.nix
+│   │   │       └── gnome_nixos.nix
 │   │   └── hyprland
 │   │       ├── common
 │   │       │   ├── hyprland_home.nix
@@ -47,10 +52,11 @@ These are personal configs. They likely will not work well on any other machines
 │   │   └── vesktop.nix
 │   └── nixos
 │       ├── boilerplate.nix
-│       └── pipewire.nix
+│       ├── pipewire.nix
+│       └── tlp.nix
 └── README.md
 
-11 directories, 23 files
+13 directories, 27 files
 ```
 ### What's going on?
 `flake.nix` runs `hosts/<device>/configuration.nix`, which in turn runs `hosts/<device>/home.nix`.
