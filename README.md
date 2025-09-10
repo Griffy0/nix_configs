@@ -16,50 +16,34 @@ These are personal configs. They likely will not work well on any other machines
 ### Tree
 <!-- TREE_START -->
 ```
-.
+/etc/nixos
+├── flake.lock
 ├── flake.nix
+├── .git
+│   ├── COMMIT_EDITMSG
+│   ├── config
+│   ├── description
+│   ├── FETCH_HEAD
+│   ├── HEAD
+│   ├── hooks
+│   ├── index
+│   ├── info
+│   ├── logs
+│   ├── objects
+│   ├── ORIG_HEAD
+│   └── refs
+├── git_push.sh
 ├── hosts
 │   ├── common
-│   │   ├── configuration.nix
-│   │   └── home.nix
 │   ├── desktop
-│   │   ├── configuration.nix
-│   │   ├── hardware-configuration.nix
-│   │   └── home.nix
 │   └── laptop
-│       ├── configuration.nix
-│       ├── hardware-configuration.nix
-│       └── home.nix
 ├── modules
 │   ├── desktop_envs
-│   │   ├── gnome
-│   │   │   └── common
-│   │   │       ├── gnome_home.nix
-│   │   │       └── gnome_nixos.nix
-│   │   └── hyprland
-│   │       ├── common
-│   │       │   ├── hyprland_home.nix
-│   │       │   └── hyprland_nixos.nix
-│   │       ├── desktop_hypr_home.nix
-│   │       ├── hypr_wallpaper.png
-│   │       └── laptop_hypr_home.nix
 │   ├── home-manager
-│   │   ├── dunst.nix
-│   │   ├── flameshot.nix
-│   │   ├── hyfetch.nix
-│   │   ├── kitty.nix
-│   │   ├── librewolf.nix
-│   │   ├── nvf.nix
-│   │   └── vesktop.nix
 │   └── nixos
-│       ├── boilerplate.nix
-│       ├── pipewire.nix
-│       └── tlp.nix
-├── README.md
-├── README.md.backup
-└── README.md.bak
+└── README.md
 
-13 directories, 29 files
+15 directories, 11 files
 ```
 <!-- TREE_END -->
 
