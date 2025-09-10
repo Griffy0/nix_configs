@@ -44,6 +44,11 @@
       type = "Application";
       exec = "firefox --enable-features=UseOzonePlatform --ozone-platform=wayland";
     };
+    librewolf = {
+      name = "Librewolf";
+      type = "Application";
+      exec = "librewolf --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    };
   };
 
   # Enable firefox
@@ -72,12 +77,11 @@
   programs.zsh = {
     enable = true;
     oh-my-zsh.enable = true;
-    initContent = ''
+    profileExtra = ''
       hyfetch
       alias nix-shell='nix-shell --run $SHELL'
     '';
   };
-
 
   # Git
   programs.git.enable = true;

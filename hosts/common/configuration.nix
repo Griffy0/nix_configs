@@ -29,6 +29,7 @@
     description = "anon";
     extraGroups = [ "networkmanager" "wheel" ];
     useDefaultShell = true;
+    packages = [ pkgs.tree ];
   };
 
   home-manager = {

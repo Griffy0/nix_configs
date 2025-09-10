@@ -14,10 +14,12 @@ These are personal configs. They likely will not work well on any other machines
 
 ## General Config Structure
 ### Tree
+```
 <!-- TREE_START -->
 ```
 .
 ├── flake.nix
+├── git_push.sh
 ├── hosts
 │   ├── common
 │   │   ├── configuration.nix
@@ -59,9 +61,9 @@ These are personal configs. They likely will not work well on any other machines
 ├── README.md.backup
 └── README.md.bak
 
-13 directories, 29 files
+13 directories, 30 files
 ```
 <!-- TREE_END -->
-
+```
 ### What's going on?
 `flake.nix` runs `hosts/<device>/configuration.nix`, which in turn runs `hosts/<device>/home.nix`.
