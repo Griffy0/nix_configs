@@ -77,7 +77,7 @@
   programs.zsh = {
     enable = true;
     oh-my-zsh.enable = true;
-    profileExtra = ''
+    initContent = ''
       hyfetch
       alias nix-shell='nix-shell --run $SHELL'
     '';

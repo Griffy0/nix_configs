@@ -13,6 +13,7 @@
         languages = {
           nix.enable = true;
           python.enable = true;
+          clang.enable = true;
         };
       };
     };

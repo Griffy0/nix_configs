@@ -5,15 +5,8 @@
 { config, pkgs, inputs,  ... }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ../../modules/nixos/boilerplate.nix
-      ../../modules/desktop_envs/gnome/gnome_nixos.nix
-      ../../modules/desktop_envs/hyprland/common/hyprland_nixos.nix
-      ../../modules/nixos/pipewire.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  # imports =
+  #  [ ];
 
   # Don't keep more than the last 3 nix builds
   boot.loader.systemd-boot.configurationLimit = 5;
@@ -29,14 +22,6 @@
         options root=UUID=1E30-F9BE
     '';
   };
-
-  networking.hostName = "nixos"; # Define your hostname.
-
-  # Disable the X11 windowing system (Wayland FTW)
-  services.xserver.enable = false;
-
-  # Enable the GDM display manager
-#  services.displayManager.gdm.enable = true;
   
   # Boot hyprland on startup
   services.greetd = {
@@ -99,10 +84,6 @@
   # Waste less power
   services.power-profiles-daemon.enable = true;
 
-  # zsh goog
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
   environment.systemPackages = [
     pkgs.efibootmgr
   ];
@@ -113,23 +94,4 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   }; 
-  
-  # Add self
-  users.users.anon = {
-    isNormalUser = true;
-    description = "anon";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
-    useDefaultShell = true;
-  };
-
-  home-manager = {
-    # also pass inputs to home-manager modules
-    backupFileExtension = "backup";
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "anon" = import ./home.nix;
-    };
-  };
-
-  system.stateVersion = "25.05";
 }

@@ -23,18 +23,14 @@
         ./hosts/common/configuration.nix
         inputs.home-manager.nixosModules.default
         inputs.stylix.nixosModules.stylix
-#        inputs.nvf.homeManagerModules.default
-        #inputs.nix-wallpaper.packages."x86_64-linux".default
       ];
     };
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs; host = "desktop";};
       modules = [
-        ./hosts/desktop/configuration.nix
+        ./hosts/common/configuration.nix
         inputs.home-manager.nixosModules.default
         inputs.stylix.nixosModules.stylix
-#        inputs.nvf.homeManagerModules.default
-        #inputs.nix-wallpaper.packages."x86_64-linux".default
       ];
     };
   };

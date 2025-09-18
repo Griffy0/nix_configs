@@ -27,7 +27,7 @@
   users.users.anon = {
     isNormalUser = true;
     description = "anon";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
     useDefaultShell = true;
     packages = [ pkgs.tree ];
   };
