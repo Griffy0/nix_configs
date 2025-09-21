@@ -37,6 +37,7 @@
       vesktop.enable = false;
       firefox.enable = false;
       qt.enable = false;
+###      nvf.enable = false;
     };
     cursor = {
       package = inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default;

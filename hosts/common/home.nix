@@ -37,7 +37,7 @@
     signal = {
       name = "Signal";
       type = "Application";
-      exec = "signal-desktop --password-store=\"gnome-libsecret\" --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      exec = "signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
     };
     firefox = {
       name = "Firefox";
