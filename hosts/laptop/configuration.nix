@@ -5,6 +5,10 @@
 { config, pkgs, inputs,  ... }:
 
 {
+  imports = [
+    ../../modules/nixos/steam.nix
+  ];
+
   # Enable AsusCtl
   services.asusd.enable = true;
   services.asusd.enableUserService = true;
