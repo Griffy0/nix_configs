@@ -14,7 +14,6 @@ These are personal configs. They likely will not work well on any other machines
 
 ## General Config Structure
 ### Tree
-<!-- TREE_START -->
 ```
 .
 ├── flake.lock
@@ -62,7 +61,5 @@ These are personal configs. They likely will not work well on any other machines
 
 13 directories, 30 files
 ```
-<!-- TREE_END -->
-
 ### What's going on?
 `flake.nix` runs `hosts/<device>/configuration.nix`, which in turn runs `hosts/<device>/home.nix`.

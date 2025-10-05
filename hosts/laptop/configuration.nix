@@ -7,6 +7,7 @@
 {
   imports = [
     ../../modules/nixos/steam.nix
+    ../../modules/nixos/intel.nix
   ];
 
   # Enable AsusCtl

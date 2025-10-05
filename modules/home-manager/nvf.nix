@@ -14,6 +14,7 @@
           nix.enable = true;
           python.enable = true;
           clang.enable = true;
+          zig.enable = true;
         };
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
