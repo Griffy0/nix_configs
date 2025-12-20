@@ -14,6 +14,7 @@
     nix-wallpaper.url = "github:lunik1/nix-wallpaper";
     nvf.url = "github:notashelf/nvf";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

@@ -14,7 +14,16 @@
       inputs.home-manager.nixosModules.default
     ];
 
+  # Don't save more than past 5 generations
+  boot.loader.systemd-boot.configurationLimit = 5;
+
+  # Increase systemd wait time
+  boot.loader.timeout = 900;
+
   networking.hostName = "${host}"; # Define your hostname.
+  
+  # Enable pro controller
+  services.joycond.enable = true;
 
   # Disable the X11 windowing system (Wayland FTW)
   services.xserver.enable = false;

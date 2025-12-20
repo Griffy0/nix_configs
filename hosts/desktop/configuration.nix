@@ -9,12 +9,6 @@
     ../../modules/nixos/nvidia.nix
   ];
 
-  # Don't keep more than the last 5 nix builds
-  boot.loader.systemd-boot.configurationLimit = 5;
-
-  # Disable auto OS selection
-  boot.loader.timeout = 900;
-
   # Add Win partition to systemd
   boot.loader.systemd-boot.extraEntries = {
     "windows.conf" = ''

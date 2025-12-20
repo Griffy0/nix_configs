@@ -32,4 +32,9 @@
 
   # Add a video driver to please the Hypr gods
   services.xserver.videoDrivers = [ "intel" ];
+
+  services.udev.extraRules = ''
+    ACTION=="add", ATTRS{idVendor}=="0b05", ATTRS{idProduct}=="1bf2", RUN+="${pkgs.bash}/bin/bash ./turn_off_screen.sh"
+    ACTION=="remove", ATTRS{idVendor}=="0b05", ATTRS{idProduct}=="1bf2", RUN+="${pkgs.bash}/bin/bash ./turn_on_screen.sh"
+  '';
 }

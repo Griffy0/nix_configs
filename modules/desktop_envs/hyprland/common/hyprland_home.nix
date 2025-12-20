@@ -37,6 +37,7 @@
       vesktop.enable = false;
       firefox.enable = false;
       qt.enable = false;
+      spicetify.enable = false;
 ###      nvf.enable = false;
     };
     cursor = {

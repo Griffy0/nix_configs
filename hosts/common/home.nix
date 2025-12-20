@@ -18,22 +18,20 @@
     ../../modules/home-manager/hyfetch.nix
     ../../modules/home-manager/vesktop.nix
     ../../modules/home-manager/nvf.nix
+    ../../modules/home-manager/spotify.nix
+    ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/dev.nix
   ];
 
   # These don't have any better way to import
-  home.packages = [
-    pkgs.signal-desktop
-    pkgs.spotify
-    pkgs.spotify-cli-linux
+  home.packages = with pkgs; [
+    signal-desktop # Signal messager
+    wineWowPackages.waylandFull # Windows compatibility stuff
+    htop # Performance viewer
   ];
 
   # Custom arguments for when launched with wofi, force Spotify and Signal to use Wayland
   xdg.desktopEntries = {
-    spotify = {
-      name = "Spotify";
-      type = "Application";
-      exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
-    };
     signal = {
       name = "Signal";
       type = "Application";
@@ -78,14 +76,16 @@
     enable = true;
     oh-my-zsh.enable = true;
     initContent = ''
-      hyfetch
       alias nix-shell='nix-shell --run $SHELL'
     '';
   };
 
   # Git
-  programs.git.enable = true;
-
+  programs.git = {
+    enable = true;
+    userEmail = "jagriff007@gmail.com";
+    userName = "Griffy0";
+  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
