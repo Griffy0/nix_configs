@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  # Disable the X11 windowing system (Wayland FTW)
+  services.xserver.enable = false;
+
   # Icons for HyprPanel, managed in hyprland_home.nix
   fonts.packages = [ pkgs.nerd-fonts.symbols-only ];
 

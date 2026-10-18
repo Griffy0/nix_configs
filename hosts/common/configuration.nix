@@ -2,31 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, host, ... }:
+{ config, pkgs, inputs, host, lib, ... }:
 
 {
   imports =
     [ 
-      ../${host}/configuration.nix
-      ../${host}/hardware-configuration.nix
       ../../modules/nixos/boilerplate.nix
-      ../../modules/nixos/pipewire.nix
+#      ../../modules/nixos/pipewire.nix
       inputs.home-manager.nixosModules.default
     ];
 
   # Don't save more than past 5 generations
-  boot.loader.systemd-boot.configurationLimit = 5;
+#  boot.loader.systemd-boot.configurationLimit = 5;
 
   # Increase systemd wait time
-  boot.loader.timeout = 900;
-
-  networking.hostName = "${host}"; # Define your hostname.
-  
-  # Enable pro controller
-  services.joycond.enable = true;
-
-  # Disable the X11 windowing system (Wayland FTW)
-  services.xserver.enable = false;
+#  boot.loader.timeout = 900;
 
   # zsh goog
   programs.zsh.enable = true;
@@ -41,28 +31,21 @@
     packages = [ pkgs.tree ];
   };
 
-  home-manager = {
-    # also pass inputs to home-manager modules
-    backupFileExtension = "backup";
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "anon".imports = [ 
-        ./home.nix
-        ../${host}/home.nix 
-      ];
-    };
-  };
-  
-  # If we're booting hyprland
+  fonts.packages = with pkgs; [
+    nerd-fonts.symbols-only
+  ];
+   
+  /*# If we're booting hyprland
   specialisation.hyprland.configuration = {
     imports = [ 
       ../../modules/desktop_envs/hyprland/common/hyprland_nixos.nix 
     ];
-    home-manager.users.anon.imports = [
+    home-manager.users.anon.imports = lib.optionals (builtins.pathExists ../../modules/desktop_envs/hyprland/${host}_hypr_home.nix) [
       ../../modules/desktop_envs/hyprland/common/hyprland_home.nix
       ../../modules/desktop_envs/hyprland/${host}_hypr_home.nix
     ];
   };
+
 
   # If we're booting gnome instead
   specialisation.gnome.configuration = {
@@ -72,7 +55,6 @@
     home-manager.users.anon.imports = [
       ../../modules/desktop_envs/gnome/common/gnome_home.nix
     ];
-  };
-
-  system.stateVersion = "25.05";
+  };*/
 }
+

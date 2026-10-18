@@ -6,8 +6,16 @@
 
 {
   imports = [ 
+    ./hardware-configuration.nix
     ../../modules/nixos/nvidia.nix
+    ../../modules/desktop_envs/hyprland/common/hyprland_nixos.nix   # Load Hyprland
   ];
+
+  home-manager.users.anon.imports = [
+    ../../modules/desktop_envs/hyprland/common/hyprland_home.nix  # Load Hyprland
+    ../../modules/desktop_envs/hyprland/desktop_hypr_home.nix
+    ../../hosts/common/home.nix
+  ]
 
   # Add Win partition to systemd
   boot.loader.systemd-boot.extraEntries = {
@@ -18,6 +26,9 @@
     '';
   };
   
+  # Init hostname
+  networking.hostName = "desktop";
+
   # Boot hyprland on startup
   services.greetd = {
     enable = true;

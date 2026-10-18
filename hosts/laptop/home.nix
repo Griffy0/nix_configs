@@ -6,6 +6,10 @@
     pkgs.wvkbd 
   ];
 
+  imports = [
+    ../../modules/home-manager/common_apps.nix
+  ]
+
   # Enable the other half of Bluetooth
   services.blueman-applet.enable = true;
 }

@@ -6,9 +6,20 @@
 
 {
   imports = [
+    ./hardware-configuration.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/intel.nix
+    ../../modules/desktop_envs/hyprland/common/hyprland_nixos.nix   # Load Hyprland
+    ../common/configuration.nix
   ];
+
+  home-manager.users.anon.imports = [
+    ../../modules/desktop_envs/hyprland/common/hyprland_home.nix  # Load Hyprland
+    ../../modules/desktop_envs/hyprland/laptop_hypr_home.nix
+    ../../hosts/common/home.nix
+  ]
+
+  networking.hostName = "laptop";
 
   # Enable AsusCtl
   services.asusd.enable = true;
